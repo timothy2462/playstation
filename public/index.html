@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Playstation 4 UI build"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Play Station</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7R7CHWGLK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M7R7CHWGLK');
+    </script>
+    <style>
+      body {
+        overflow-y: hidden;
+      }
+      @media (max-width: 768px) {
+        #root {
+          display: none;
+        }
+        #mobile {
+          display: flex !important;
+          flex-direction: column;
+        }
+      }
+      @keyframes rotateAnimation {
+        0% {
+          transform: rotate(0) scale(1)
+        }
+        50% {
+          transform: rotate(120deg) scale(0)
+        }
+        70% {
+          transform: rotate(-120deg) scale(0)
+        }
+        100% {
+          transform: rotate(0) scale(1)
+        }
+      }
+
+      #mobile {
+        height: 100vh;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        background-color: #006FCD;
+      }
+
+      #triangle svg {
+        animation: rotateAnimation 3s ease-in-out infinite;
+      }
+      #square svg {
+        animation: rotateAnimation 3s 1s ease-in-out infinite;
+      }
+      #circle svg {
+        animation: rotateAnimation 3s .5s ease-in-out infinite;
+      }
+      #cross svg {
+        animation: rotateAnimation 3s 2s ease-in-out infinite;
+      }
+
+      #loader {
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #006FCD;
+        z-index: 10;
+        transition: opacity 0.3s;
+      }
+      #loader > .screen {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #wrapper {
+        width: calc(48px * 2);
+      }
+      #wrapper div {
+        width: 48px;
+        height: 48px;
+        float: left;
+        text-align: center;
+        line-height: 4.5
+      }
+      #wrapper div svg {
+        width: 70%;
+      }
+      .loader-text {
+        color: white;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loader">
+        <div class="screen">
+          <div id="wrapper"> 
+            <div id="triangle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 115"><defs/><path fill="#FFF" d="M64.5 0L129 115H0L64.5 0zm0 24.531L20.489 103h88.021L64.5 24.531z"/></svg>
+            </div> 
+            <div id="circle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"><defs/><path fill="#FFF" d="M64.5 0C100.122 0 129 28.878 129 64.5S100.122 129 64.5 129 0 100.122 0 64.5 28.878 0 64.5 0zm0 12C35.505 12 12 35.505 12 64.5S35.505 117 64.5 117 117 93.495 117 64.5 93.495 12 64.5 12z"/></svg>
+            </div> 
+            <div id="cross">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"><defs/><path fill="#FFF" d="M101 .515L109.485 9l-46 46 46 46-8.485 8.485-46-46-46 46L.515 101l46-46-46-46L9 .515l46 46 46-46z"/></svg>
+            </div>
+            
+            <div id="square">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113 113"><defs/><path fill="#FFF" d="M113 0v113H0V0h113zm-12 12H12v89h89V12z"/></svg>
+            </div>
+          </div>
+          <p class="loader-text" style="margin-bottom: 0px;">Just caching some stuff... This might take a while 😅</p>
+          <p class="loader-text" style="margin-top: 5px;"><b>Tip: Use Arrow keys!</b></p>
+        </div>
+    </div>
+    <div id="mobile">
+      <p class="loader-text" style="margin-bottom: 0px;">Well this is awkward😹</p>
+      <p class="loader-text" style="margin-top: 5px;"><b>Can you please view on your desktop to get the best experience 😅</b></p>
+    </div>
+    <div id="root" style="overflow-x: hidden;"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
